@@ -23,7 +23,7 @@ const allTags = [...new Set(posts.flatMap((post) => post.data.tags))];
     </p>
     <div class="hero-actions">
       <a href="#posts" class="btn btn-primary">浏览文章</a>
-      <a href="/about" class="btn btn-ghost">了解更多</a>
+      <a href={`${import.meta.env.BASE_URL}about`} class="btn btn-ghost">了解更多</a>
     </div>
   </section>
 

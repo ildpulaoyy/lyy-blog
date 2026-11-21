@@ -1,14 +1,15 @@
 ---
+const base = import.meta.env.BASE_URL;
 const path = Astro.url.pathname;
 const links = [
-  { href: '/', label: '首页' },
-  { href: '/about', label: '关于' },
+  { href: base, label: '首页' },
+  { href: base + 'about', label: '关于' },
 ];
 ---
 
 <header class="site-header">
   <div class="header-inner">
-    <a href="/" class="brand">
+    <a href={base} class="brand">
       <span class="brand-mark">🌶️</span>
       <span class="brand-name">青椒<span class="brand-dot">.</span></span>
     </a>

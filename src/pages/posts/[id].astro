@@ -20,9 +20,9 @@ const dateStr = pubDate.toLocaleDateString('zh-CN', {
 });
 ---
 
-<BaseLayout title={`${title} · 林深`} description={description}>
+<BaseLayout title={`${title} · 青椒`} description={description}>
   <article class="post-page">
-    <a href="/" class="back-link">← 返回首页</a>
+    <a href={import.meta.env.BASE_URL} class="back-link">← 返回首页</a>
 
     <header class="post-header">
       <div class="post-header-cover" style={`background: ${gradient}`}>
@@ -45,7 +45,7 @@ const dateStr = pubDate.toLocaleDateString('zh-CN', {
     </div>
 
     <div class="post-footer">
-      <a href="/" class="btn btn-primary">阅读更多文章</a>
+      <a href={import.meta.env.BASE_URL} class="btn btn-primary">阅读更多文章</a>
     </div>
   </article>
 </BaseLayout>
