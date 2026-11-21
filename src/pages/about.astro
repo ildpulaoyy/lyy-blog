@@ -1,0 +1,47 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="关于 · 青椒"
+  description="关于青椒（im lyy），以及这个博客背后的故事。"
+>
+  <section class="about-page">
+    <div class="about-hero">
+      <div class="about-avatar">🌶️</div>
+      <h1>关于我</h1>
+      <p class="about-lead">来自青椒星球的一只青椒。</p>
+    </div>
+
+    <div class="about-content prose">
+      <p>
+        你好！我叫青椒，你也可以叫我青骄（im lyy）。这里是我用文字记录生活的地方——
+        日记、随笔、摘抄，还有一些胡言乱语。
+      </p>
+
+      <h2>座右铭</h2>
+      <blockquote>
+        遇到艰难险阻的时候，我常会想起这个世界怎么还不毁灭。——青椒
+      </blockquote>
+
+      <h2>我会写些什么</h2>
+      <ul>
+        <li><strong>日记本</strong> —— 平凡日子里那些不平凡的小事</li>
+        <li><strong>小作文</strong> —— 兴起时写下的长篇与短章</li>
+        <li><strong>摘抄</strong> —— 打动我的句子与段落</li>
+        <li><strong>胡言乱语</strong> —— 没什么道理，但很真实</li>
+      </ul>
+
+      <h2>这个博客</h2>
+      <p>
+        它使用 <a href="https://astro.build" target="_blank" rel="noopener">Astro</a> 构建，
+        内容以 Markdown 编写。没有复杂的后端，没有冗余的脚本——只有纯粹的内容与一点点小心思。
+        文章从原来的 Hexo 博客完整迁移而来。
+      </p>
+
+      <div class="about-cta">
+        <a href="/" class="btn btn-primary">返回首页</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

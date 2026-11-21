@@ -1,0 +1,29 @@
+---
+interface Props {
+  post: import('astro:content').CollectionEntry<'blog'>;
+}
+
+const { post } = Astro.props;
+const { title, description, pubDate, tags, emoji, gradient } = post.data;
+const dateStr = pubDate.toLocaleDateString('zh-CN', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+---
+
+<article class="post-card">
+  <a href={`/posts/${post.id}`} class="post-card-link">
+    <div class="post-cover" style={`background: ${gradient}`}>
+      <span class="post-cover-emoji">{emoji}</span>
+    </div>
+    <div class="post-card-body">
+      <time class="post-date" datetime={pubDate.toISOString()}>{dateStr}</time>
+      <h3 class="post-title">{title}</h3>
+      <p class="post-desc">{description}</p>
+      <div class="post-tags">
+        {tags.map((tag) => <span class="tag">#{tag}</span>)}
+      </div>
+    </div>
+  </a>
+</article>
