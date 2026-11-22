@@ -9,7 +9,8 @@ const blog = defineCollection({
     pubDate: z.coerce.date(),
     tags: z.array(z.string()).default([]),
     emoji: z.string().default('📝'),
-    gradient: z.string().default('linear-gradient(135deg, #667eea, #764ba2)'),
+    cover: z.string().default('cover-01.svg'),
+    gradient: z.string().optional(),
   }),
 });
 
