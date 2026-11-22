@@ -1,44 +1,17 @@
 ---
-import { getCollection } from 'astro:content';
-import BaseLayout from '../layouts/BaseLayout.astro';
-import PostCard from '../components/PostCard.astro';
-
-const posts = (await getCollection('blog')).sort(
-  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
-);
-
-const allTags = [...new Set(posts.flatMap((post) => post.data.tags))];
+import BlogLayout from "../layouts/BlogLayout.astro";
+import PostFeed from "../components/posts/PostFeed.vue";
+import { getPosts, summarize } from "../lib/posts";
+const posts = (await getPosts()).map(summarize);
 ---
-
-<BaseLayout title="HI！im lyy · 青椒星球">
-  <section class="hero" style={`background-image: url('${import.meta.env.BASE_URL}images/hero-bg.svg')`}>
-    <div class="hero-badge">🌶️ 来自青椒星球的一只青椒</div>
-    <h1 class="hero-title">
-      HI！im lyy<br />
-      <span class="hero-accent">醒时风拂衣，情动忽提笔。</span>
-    </h1>
-    <p class="hero-subtitle">
-      这里记录我的日记、随笔、摘抄与胡言乱语。<br class="desktop-only" />
-      欢迎你，陌生的朋友。
-    </p>
-    <div class="hero-actions">
-      <a href="#posts" class="btn btn-primary">浏览文章</a>
-      <a href={`${import.meta.env.BASE_URL}about`} class="btn btn-ghost">了解更多</a>
-    </div>
-  </section>
-
-  <section class="posts-section" id="posts">
-    <div class="section-heading">
-      <h2>最近文章</h2>
-      <span class="section-count">共 {posts.length} 篇</span>
-    </div>
-
-    <div class="tag-filter">
-      {allTags.map((tag) => <span class="tag tag-lg">#{tag}</span>)}
-    </div>
-
-    <div class="post-grid">
-      {posts.map((post) => <PostCard post={post} />)}
-    </div>
-  </section>
-</BaseLayout>
+<BlogLayout home>
+  <div class="hello-strip"><span class="icon-[lucide--sparkles]" aria-hidden="true"></span><p>你好呀，远道而来的朋友，今天也要开心哦！</p><span class="hello-pill">HAVE A NICE DAY</span></div>
+  <PostFeed posts={posts} client:load />
+</BlogLayout>
+<style>
+.hello-strip { display: flex; align-items: center; gap: 9px; color: var(--accent); font-size: 11px; margin: 0 0 21px; padding: 11px 15px; border: 1px dashed #ebbbc980; border-radius: 11px; background: #ffffff25; }
+.hello-strip > span:first-child { font-size: 17px; flex-shrink: 0; }
+.hello-strip p { margin: 0; flex: 1; }
+.hello-pill { font: 7px "Oxanium-Medium", sans-serif; letter-spacing: .05em; opacity: .65; }
+@media(max-width:760px) { .hello-strip { font-size: 10px; margin-bottom: 22px; } .hello-pill { display: none; } }
+</style>
