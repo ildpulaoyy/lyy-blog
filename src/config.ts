@@ -27,7 +27,7 @@ export const welcomeConfig = {
 export const personalInfo = {
   name: "青椒",
   englishName: "im lyy",
-  avatar: withBase("/images/avatar.jpg"),
+  avatar: withBase("/images/avatar.webp"),
   role: "来自青椒星球的一只青椒",
   bio: "醒时风拂衣，情动忽提笔。",
   github: "https://github.com/ildpulaoyy",

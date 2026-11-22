@@ -2,16 +2,16 @@
 import { withBase } from "../../lib/urls";
 const props = defineProps<{ kind: string; featured?: boolean }>();
 const coverMap: Record<string, string> = {
-  astro: "anime-cover-01.jpg",
-  vue: "anime-cover-02.jpg",
-  css: "anime-cover-03.jpg",
-  notes: "anime-cover-04.jpg",
-  life: "anime-cover-05.jpg",
-  typescript: "anime-cover-06.jpg",
-  git: "anime-cover-07.jpg",
-  design: "anime-cover-08.jpg",
+  astro: "anime-cover-01.webp",
+  vue: "anime-cover-02.webp",
+  css: "anime-cover-03.webp",
+  notes: "anime-cover-04.webp",
+  life: "anime-cover-05.webp",
+  typescript: "anime-cover-06.webp",
+  git: "anime-cover-07.webp",
+  design: "anime-cover-08.webp",
 };
-const src = withBase(`/images/${coverMap[props.kind] || "anime-cover-01.jpg"}`);
+const src = withBase(`/images/${coverMap[props.kind] || "anime-cover-01.webp"}`);
 </script>
 <template>
   <div class="anime-cover" :class="{ featured }">
