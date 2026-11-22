@@ -12,7 +12,8 @@ export async function getStaticPaths() {
 
 const { post } = Astro.props;
 const { Content } = await render(post);
-const { title, description, pubDate, tags, emoji, gradient } = post.data;
+const { title, description, pubDate, tags, emoji, cover } = post.data;
+const coverUrl = `${import.meta.env.BASE_URL}images/${cover}`;
 const dateStr = pubDate.toLocaleDateString('zh-CN', {
   year: 'numeric',
   month: 'long',
@@ -25,8 +26,7 @@ const dateStr = pubDate.toLocaleDateString('zh-CN', {
     <a href={import.meta.env.BASE_URL} class="back-link">← 返回首页</a>
 
     <header class="post-header">
-      <div class="post-header-cover" style={`background: ${gradient}`}>
-        <span>{emoji}</span>
+      <div class="post-header-cover" style={`background-image: url('${coverUrl}')`}>
       </div>
       <div class="post-meta">
         <time datetime={pubDate.toISOString()}>{dateStr}</time>
