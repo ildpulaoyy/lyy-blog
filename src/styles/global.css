@@ -23,6 +23,25 @@
   src: url("/fonts/Oxanium-Medium.woff2") format("woff2");
   font-weight: 500 800; font-style: normal; font-display: swap;
 }
+@font-face {
+  font-family: "Cormorant";
+  src: url("/fonts/Cormorant-Regular.ttf") format("truetype");
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "Cormorant";
+  src: url("/fonts/Cormorant-SemiBold.ttf") format("truetype");
+  font-weight: 600 700; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "Cormorant";
+  src: url("/fonts/Cormorant-Italic.ttf") format("truetype");
+  font-weight: 400; font-style: italic; font-display: swap;
+}
+:root {
+  --font-serif-cn: "Songti SC", "STSong", "Noto Serif CJK SC", "Source Han Serif SC", "SimSun", serif;
+  --font-serif-en: "Cormorant", Georgia, serif;
+}
 :root {
   --bg: #fff1f1; --card: #fff; --text: #4c4551; --muted: #938791;
   --accent: #d85d7e; --accent-soft: #fff0f4; --line: #f3e9ed;
@@ -87,23 +106,113 @@ a.chip:hover { background: var(--accent); color: var(--card); }
 .field { width: 100%; border: 1px solid var(--line); border-radius: 10px; background: var(--bg); padding: 11px 14px; color: var(--text); outline-offset: 2px; }
 .field::placeholder { color: var(--muted); }
 .field:focus { border-color: var(--accent); }
-.prose { color: var(--text); line-height: 2; font-family: system-ui, sans-serif; font-size: 15px; }
-.prose h2, .prose h3 { font-family: "ZaoZiGongFangYueYuan", sans-serif; font-weight: 600; line-height: 1.5; margin: 2em 0 .8em; scroll-margin-top: 100px; }
-.prose h2 { font-size: 24px; border-bottom: 1px solid var(--line); padding-bottom: 10px; }
-.prose h3 { font-size: 19px; }
-.prose p { margin: 1.2em 0; }
-.prose a { color: var(--accent); text-decoration: underline; text-underline-offset: 4px; }
-.prose ul, .prose ol { padding-left: 1.5em; margin: 1em 0; }
-.prose ul { list-style-type: disc; }
+/* ---------- Magazine-style prose ---------- */
+.prose {
+  color: var(--text);
+  font-family: var(--font-serif-cn);
+  font-size: 16.5px;
+  line-height: 2.05;
+  letter-spacing: .02em;
+  text-align: justify;
+  text-justify: inter-ideograph;
+}
+.prose > p { margin: 1.5em 0; text-indent: 2em; }
+/* 首段：杂志式导语，首字下沉，不缩进 */
+.prose > p:first-child {
+  text-indent: 0;
+  font-size: 17.5px;
+  line-height: 2.1;
+}
+.prose > p:first-child::first-letter {
+  float: left;
+  font-family: var(--font-serif-en);
+  font-size: 4.6em;
+  line-height: .82;
+  font-weight: 600;
+  color: var(--accent);
+  padding: .08em .12em 0 0;
+}
+.prose h2, .prose h3 {
+  font-family: var(--font-serif-cn);
+  font-weight: 700;
+  line-height: 1.5;
+  scroll-margin-top: 100px;
+  text-align: left;
+  text-indent: 0;
+}
+.prose h2 {
+  font-size: 23px;
+  margin: 2.6em 0 1.1em;
+  padding: 0 0 .5em 0;
+  border-bottom: none;
+  position: relative;
+  counter-increment: mag-section;
+}
+.prose h2::before {
+  content: counter(mag-section, decimal-leading-zero);
+  font-family: var(--font-serif-en);
+  font-size: .95em;
+  font-weight: 600;
+  color: var(--accent);
+  letter-spacing: .05em;
+  margin-right: .55em;
+}
+.prose h2::after {
+  content: '';
+  position: absolute;
+  left: 0; bottom: 0;
+  width: 42px; height: 2px;
+  background: var(--accent);
+}
+.prose { counter-reset: mag-section; }
+.prose h3 {
+  font-size: 18.5px;
+  margin: 2em 0 .8em;
+  color: var(--accent);
+}
+.prose a { color: var(--accent); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; }
+.prose ul, .prose ol { padding-left: 1.6em; margin: 1.4em 0; text-indent: 0; }
+.prose ul { list-style-type: none; }
+.prose ul li { position: relative; padding-left: 1.2em; }
+.prose ul li::before { content: '✧'; position: absolute; left: 0; color: var(--accent); font-size: .85em; }
 .prose ol { list-style-type: decimal; }
-.prose li { margin: .4em 0; }
-.prose blockquote { margin: 24px 0; padding: 2px 20px; border-left: 3px solid var(--accent); background: var(--accent-soft); border-radius: 0 10px 10px 0; }
-.prose :not(pre) > code { background: var(--accent-soft); color: var(--accent); padding: 3px 6px; border-radius: 5px; font-size: .88em; overflow-wrap: anywhere; }
-.prose pre { position: relative; padding: 24px 20px; border-radius: 12px; font-size: 12px; line-height: 1.9; overflow-x: auto; }
+.prose li { margin: .5em 0; line-height: 1.95; text-align: left; }
+/* 杂志式引文：大号衬线斜体 + 上下细线 */
+.prose blockquote {
+  margin: 2.2em 0;
+  padding: 1.4em 2.2em;
+  border: none;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  background: transparent;
+  text-align: center;
+  text-indent: 0;
+  font-family: var(--font-serif-en), var(--font-serif-cn);
+  font-style: italic;
+  font-size: 1.35em;
+  line-height: 1.7;
+  color: var(--accent);
+  position: relative;
+}
+.prose blockquote::before {
+  content: '"';
+  display: block;
+  font-family: var(--font-serif-en);
+  font-size: 3em;
+  line-height: .5;
+  font-style: normal;
+  opacity: .35;
+  margin-bottom: .15em;
+}
+.prose :not(pre) > code { background: var(--accent-soft); color: var(--accent); padding: 3px 6px; border-radius: 5px; font-size: .88em; overflow-wrap: anywhere; font-family: Consolas, monospace; }
+.prose pre { position: relative; padding: 24px 20px; border-radius: 12px; font-size: 12px; line-height: 1.9; overflow-x: auto; text-indent: 0; text-align: left; }
 .prose pre code { font-family: Consolas, monospace; }
 .prose .copy-code { position: absolute; right: 10px; top: 8px; background: #ffffff15; border: 1px solid #ffffff25; border-radius: 5px; color: #cbd5e1; padding: 2px 7px; font-size: 11px; }
-.prose strong { font-weight: 650; }
-.prose img { border-radius: 12px; }
+.prose strong { font-weight: 700; color: var(--text); }
+.prose img { border-radius: 12px; display: block; margin: 2em auto; max-width: 100%; }
+/* 分隔线 */
+.prose hr { border: none; text-align: center; margin: 3em 0; }
+.prose hr::before { content: '✦  ✦  ✦'; letter-spacing: .6em; color: var(--accent); opacity: .6; font-size: 13px; }
 @media (min-width: 1440px) { .shell { max-width: 1390px; } .blog-grid { grid-template-columns: 245px minmax(0, 1fr) 230px; gap: 25px; } }
 @media (max-width: 1100px) { .blog-grid { grid-template-columns: 220px minmax(0, 1fr); } .right-sidebar { display: none; } }
 @media (max-width: 760px) {
