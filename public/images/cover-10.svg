@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" preserveAspectRatio="xMidYMid slice">
+<defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#E4DCF6"/><stop offset="1" stop-color="#BCAEE6"/>
+    </linearGradient></defs>
+<rect width="800" height="500" fill="url(#bg)"/>
+<circle cx="400" cy="230" r="230" fill="#FFFFFF" opacity="0.10"/>
+
+<!-- dreamy night, floating islands, moon -->
+<circle cx="560" cy="150" r="66" fill="#FFF3CC"/>
+<g fill="#FFFFFF" opacity="0.85">
+  <ellipse cx="250" cy="260" rx="70" ry="40"/><ellipse cx="320" cy="245" rx="50" ry="36"/><ellipse cx="195" cy="248" rx="45" ry="32"/>
+</g>
+<g transform="translate(500 330)">
+  <path d="M0 0 L60 -34 L120 0 L60 34 Z" fill="#8E7BC9"/>
+  <path d="M60 34 L120 0 L120 30 L60 66 Z" fill="#725FAE"/>
+  <path d="M0 0 L60 34 L60 66 L0 32 Z" fill="#A794DA"/>
+</g>
+<g transform="translate(250 380)">
+  <rect x="0" y="0" width="46" height="46" rx="8" fill="#F0C674" transform="rotate(15 23 23)"/>
+  <rect x="0" y="0" width="40" height="40" rx="8" fill="#9AD7C4" transform="rotate(-20 20 20) translate(50 20)"/>
+</g>
+
+<g opacity="0.5"><circle cx="140" cy="140" r="2.4200000000000004"/><path d="M140 132.74 L140 147.26 M132.74 140 L147.26 140" stroke="#FFF3C4" stroke-width="0.66" stroke-linecap="round"/></g><g opacity="0.65"><circle cx="680" cy="280" r="2.2"/><path d="M680 273.4 L680 286.6 M673.4 280 L686.6 280" stroke="#FFF3C4" stroke-width="0.6" stroke-linecap="round"/></g><g opacity="0.8"><circle cx="180" cy="400" r="1.9800000000000002"/><path d="M180 394.06 L180 405.94 M174.06 400 L185.94 400" stroke="#FFF3C4" stroke-width="0.54" stroke-linecap="round"/></g><g opacity="0.5"><circle cx="640" cy="410" r="2.2"/><path d="M640 403.4 L640 416.6 M633.4 410 L646.6 410" stroke="#FFF3C4" stroke-width="0.6" stroke-linecap="round"/></g>
+</svg>
