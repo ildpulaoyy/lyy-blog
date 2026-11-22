@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" preserveAspectRatio="xMidYMid slice">
+<defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FFE6CF"/><stop offset="1" stop-color="#F6C6A0"/>
+    </linearGradient></defs>
+<rect width="800" height="500" fill="url(#bg)"/>
+<circle cx="400" cy="230" r="230" fill="#FFFFFF" opacity="0.10"/>
+
+<!-- morning light through curtain, overslept -->
+<circle cx="560" cy="150" r="80" fill="#FFF3C8" opacity="0.9"/>
+<path d="M470 40 L620 40 L520 200 L370 200 Z" fill="#FFE9B0" opacity="0.5"/>
+<path d="M600 60 L720 60 L600 220 L480 220 Z" fill="#FFEDBE" opacity="0.4"/>
+<g transform="translate(60 40)">
+  <path d="M0 0 Q40 120 10 260 L70 260 Q50 120 80 0 Z" fill="#FDF3E6" opacity="0.9"/>
+</g>
+<g transform="translate(300 340)">
+  <rect x="0" y="0" width="120" height="70" rx="12" fill="#E07A5F"/>
+  <circle cx="60" cy="35" r="26" fill="#FFF4E4"/>
+  <path d="M60 35 L60 18 M60 35 L74 44" stroke="#B85B45" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="16" cy="-4" r="9" fill="#E07A5F"/><circle cx="104" cy="-4" r="9" fill="#E07A5F"/>
+</g>
+<ellipse cx="400" cy="450" rx="260" ry="34" fill="#E0AC82" opacity="0.3"/>
+
+<g opacity="0.5"><circle cx="180" cy="140" r="2.2"/><path d="M180 133.4 L180 146.6 M173.4 140 L186.6 140" stroke="#FFF3C4" stroke-width="0.6" stroke-linecap="round"/></g><g opacity="0.65"><circle cx="660" cy="280" r="2.4200000000000004"/><path d="M660 272.74 L660 287.26 M652.74 280 L667.26 280" stroke="#FFF3C4" stroke-width="0.66" stroke-linecap="round"/></g><g opacity="0.8"><circle cx="520" cy="340" r="1.9800000000000002"/><path d="M520 334.06 L520 345.94 M514.06 340 L525.94 340" stroke="#FFF3C4" stroke-width="0.54" stroke-linecap="round"/></g>
+</svg>
