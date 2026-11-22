@@ -38,8 +38,18 @@
   src: url("/fonts/Cormorant-Italic.ttf") format("truetype");
   font-weight: 400; font-style: italic; font-display: swap;
 }
+@font-face {
+  font-family: "NotoSerifSC";
+  src: url("/fonts/NotoSerifSC-400.woff2") format("woff2");
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "NotoSerifSC";
+  src: url("/fonts/NotoSerifSC-700.woff2") format("woff2");
+  font-weight: 600 900; font-style: normal; font-display: swap;
+}
 :root {
-  --font-serif-cn: "Songti SC", "STSong", "Noto Serif CJK SC", "Source Han Serif SC", "SimSun", serif;
+  --font-serif-cn: "NotoSerifSC", "Songti SC", "STSong", "Noto Serif CJK SC", "Source Han Serif SC", "SimSun", serif;
   --font-serif-en: "Cormorant", Georgia, serif;
 }
 :root {
