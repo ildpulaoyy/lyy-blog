@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" preserveAspectRatio="xMidYMid slice">
+<defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#DCF0E4"/><stop offset="1" stop-color="#AFD9C0"/>
+    </linearGradient></defs>
+<rect width="800" height="500" fill="url(#bg)"/>
+<circle cx="400" cy="230" r="230" fill="#FFFFFF" opacity="0.10"/>
+
+<!-- diary and pencil -->
+<ellipse cx="400" cy="410" rx="240" ry="36" fill="#7FB496" opacity="0.3"/>
+<g transform="translate(230 230)">
+  <rect x="0" y="0" width="250" height="200" rx="12" fill="#FFFDF7"/>
+  <rect x="0" y="0" width="34" height="200" fill="#E9A98C"/>
+  <path d="M60 50 L210 50 M60 80 L210 80 M60 110 L170 110 M60 140 L195 140" stroke="#C9D8CC" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="125" cy="-2" r="10" fill="none" stroke="#E9A98C" stroke-width="5"/>
+</g>
+<g transform="translate(520 340) rotate(35)">
+  <rect x="0" y="0" width="16" height="160" rx="3" fill="#F2C14E"/>
+  <path d="M0 160 L8 184 L16 160 Z" fill="#E8C9A0"/>
+  <path d="M0 160 L8 184 L16 160 Z" fill="#4A4A4A"/>
+  <rect x="0" y="0" width="16" height="20" fill="#E88C8C"/>
+</g>
+
+<g opacity="0.5"><circle cx="140" cy="120" r="2.2"/><path d="M140 113.4 L140 126.6 M133.4 120 L146.6 120" stroke="#FFF3C4" stroke-width="0.6" stroke-linecap="round"/></g><g opacity="0.65"><circle cx="680" cy="140" r="2.2"/><path d="M680 133.4 L680 146.6 M673.4 140 L686.6 140" stroke="#FFF3C4" stroke-width="0.6" stroke-linecap="round"/></g><g opacity="0.8"><circle cx="620" cy="90" r="1.7600000000000002"/><path d="M620 84.72 L620 95.28 M614.72 90 L625.28 90" stroke="#FFF3C4" stroke-width="0.48" stroke-linecap="round"/></g><g opacity="0.5"><circle cx="180" cy="380" r="2.2"/><path d="M180 373.4 L180 386.6 M173.4 380 L186.6 380" stroke="#FFF3C4" stroke-width="0.6" stroke-linecap="round"/></g>
+</svg>
