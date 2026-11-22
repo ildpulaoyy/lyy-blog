@@ -24,7 +24,7 @@ const older = posts[index + 1];
       <header class="article-header">
         <a class="chip" href={withBase(`/posts/?category=${encodeURIComponent(post.data.category)}`)}>{post.data.category}</a>
         <h1>{post.data.title}</h1>
-        <div class="article-meta"><img src={withBase("/images/avatar.svg")} alt="" width="25" height="25" /><span>青椒</span><span>·</span><time datetime={summary.date}>{summary.date}</time><span>·</span><span>约 {summary.minutes} 分钟</span></div>
+        <div class="article-meta"><img src={withBase("/images/avatar.jpg")} alt="" width="25" height="25" /><span>青椒</span><span>·</span><time datetime={summary.date}>{summary.date}</time><span>·</span><span>约 {summary.minutes} 分钟</span></div>
         <p>{post.data.description}</p>
       </header>
       <div class="article-cover"><PostCover kind={post.data.cover} featured={post.data.featured} /></div>
@@ -33,7 +33,7 @@ const older = posts[index + 1];
       <div class="article-ending"><span>✿</span><p>感谢读到这里，愿这些文字对你有所帮助。</p></div>
       <div class="article-tools"><div class="article-tags">{post.data.tags.map(tag => <a class="chip" href={withBase(`/posts/?tag=${encodeURIComponent(tag)}`)}># {tag}</a>)}</div><button id="share-post" class="btn secondary"><span class="icon-[lucide--link]" aria-hidden="true"></span>复制文章链接</button></div>
       <p id="share-status" role="status" class="share-status"></p>
-      <div class="author-note"><img src={withBase("/images/avatar.svg")} alt="青椒" width="44" height="44" /><div><strong>青椒 <span class="accent">/ im lyy</span></strong><p>写一点代码，记录一点生活。欢迎来<a href={withBase("/messages/")}>留言板</a>聊聊。</p></div></div>
+      <div class="author-note"><img src={withBase("/images/avatar.jpg")} alt="青椒" width="44" height="44" /><div><strong>青椒 <span class="accent">/ im lyy</span></strong><p>写一点代码，记录一点生活。欢迎来<a href={withBase("/messages/")}>留言板</a>聊聊。</p></div></div>
       <nav class="adjacent-posts" aria-label="相邻文章">
         {newer ? <a href={withBase(`/posts/${newer.id}/`)}><span>← 上一篇</span><strong>{newer.title}</strong></a> : <div></div>}
         {older && <a href={withBase(`/posts/${older.id}/`)}><span>下一篇 →</span><strong>{older.title}</strong></a>}
