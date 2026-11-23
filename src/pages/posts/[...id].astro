@@ -31,7 +31,7 @@ const older = posts[index + 1];
         <div class="mag-deck">{post.data.description}</div>
         <div class="article-meta"><img src={withBase("/images/avatar.webp")} alt="" width="26" height="26" /><span>青椒 · im lyy</span><span class="mag-dot">✦</span><time datetime={summary.date}>{summary.date}</time><span class="mag-dot">✦</span><span>约 {summary.minutes} 分钟</span></div>
       </header>
-      <div class="article-cover"><PostCover kind={post.data.cover} featured={post.data.featured} /></div>
+      <div class="article-cover"><PostCover kind={post.data.cover} featured={post.data.featured} image={post.data.coverImage} /></div>
       <details class="mobile-toc"><summary>文章目录</summary><ol>{headings.filter(h => h.depth <= 3).map(h => <li><a href={`#${h.slug}`}>{h.text}</a></li>)}</ol></details>
       <div class="prose" id="article-body"><Content /></div>
       <div class="article-ending"><span>✿</span><p>感谢读到这里，愿这些文字对你有所帮助。</p></div>

@@ -1,6 +1,7 @@
 <script setup lang="ts">
+import { computed } from "vue";
 import { withBase } from "../../lib/urls";
-const props = defineProps<{ kind: string; featured?: boolean }>();
+const props = defineProps<{ kind: string; featured?: boolean; image?: string }>();
 const coverMap: Record<string, string> = {
   astro: "anime-cover-01.webp",
   vue: "anime-cover-02.webp",
@@ -11,7 +12,12 @@ const coverMap: Record<string, string> = {
   git: "anime-cover-07.webp",
   design: "anime-cover-08.webp",
 };
-const src = withBase(`/images/${coverMap[props.kind] || "anime-cover-01.webp"}`);
+const src = computed(() => {
+  const custom = props.image?.trim();
+  if (!custom) return withBase(`/images/${coverMap[props.kind] || "anime-cover-01.webp"}`);
+  if (/^(https?:)?\/\//.test(custom) || custom.startsWith("/")) return custom;
+  return withBase("/" + custom.replace(/^\.?\//, ""));
+});
 </script>
 <template>
   <div class="anime-cover" :class="{ featured }">

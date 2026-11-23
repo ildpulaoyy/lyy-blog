@@ -11,6 +11,7 @@ const posts = defineCollection({
     category: z.enum(["前端开发", "开发笔记", "生活随笔"]),
     tags: z.array(z.string()),
     cover: z.enum(["astro", "vue", "css", "notes", "life", "typescript", "git", "design"]),
+    coverImage: z.string().optional(),
     featured: z.boolean().default(false),
     draft: z.boolean().default(false),
   }),

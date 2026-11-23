@@ -58,7 +58,7 @@ onUnmounted(() => window.removeEventListener("popstate", readUrl));
     <div v-if="tag || month || (category && !categoryNames.includes(category))" class="filter-summary"><span>正在浏览：{{ tag || month || category }}</span><button @click="reset">清除筛选 ×</button></div>
     <div class="post-list" aria-live="polite">
       <article v-for="post in displayed" :key="post.id" class="post-card card" :data-category="post.category">
-        <a :href="withBase(`/posts/${post.id}/`)" class="cover-link" :aria-label="`阅读：${post.title}`" tabindex="-1"><PostCover :kind="post.cover" :featured="post.featured" /></a>
+        <a :href="withBase(`/posts/${post.id}/`)" class="cover-link" :aria-label="`阅读：${post.title}`" tabindex="-1"><PostCover :kind="post.cover" :featured="post.featured" :image="post.coverImage" /></a>
         <div class="post-info">
           <div class="post-kicker"><span v-if="post.featured" class="pin"><span class="icon-[lucide--pin]"></span>置顶</span><a :href="withBase(`/posts/?category=${encodeURIComponent(post.category)}`)">{{ post.category }}</a><span class="meta-divider">/</span><time :datetime="post.date">{{ post.date.replaceAll("-", ".") }}</time></div>
           <h3><a :href="withBase(`/posts/${post.id}/`)">{{ post.title }}</a></h3>
