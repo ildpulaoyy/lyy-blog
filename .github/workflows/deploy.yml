@@ -3,8 +3,6 @@ name: Deploy blog
 on:
   push:
     branches: [main]
-    paths-ignore:
-      - 'kanade-site/public/admin/**'
   workflow_dispatch:
 
 permissions:
@@ -13,10 +11,6 @@ permissions:
 concurrency:
   group: pages
   cancel-in-progress: false
-
-defaults:
-  run:
-    working-directory: kanade-site
 
 jobs:
   build-and-deploy:
@@ -39,11 +33,14 @@ jobs:
           SITE_URL: https://ildpulaoyy.github.io/lyy-blog/
           SITE_BASE: /lyy-blog/
 
+      - name: Add .nojekyll
+        run: touch dist/.nojekyll
+
       - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: kanade-site/dist
+          publish_dir: dist
           publish_branch: gh-pages
           user_name: qingjiao
           user_email: admin@imlyy.xyz
