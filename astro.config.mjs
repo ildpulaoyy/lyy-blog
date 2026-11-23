@@ -11,6 +11,7 @@ export default defineConfig({
   base: env.SITE_BASE || new URL(site).pathname,
   trailingSlash: 'always',
   compressHTML: true,
+  build: { inlineStylesheets: 'always' },
   integrations: [vue()],
   vite: { plugins: [tailwindcss()] },
 });
