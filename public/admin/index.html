@@ -7,15 +7,90 @@
   <title>内容管理 · 青椒的小站</title>
   <style>
     html, body { margin: 0; height: 100%; background: #fff1f1; }
-    #cms-loading { display: flex; align-items: center; justify-content: center; height: 100vh; font-family: system-ui, sans-serif; color: #d85d7e; }
+    #cms-fallback {
+      display: none; box-sizing: border-box;
+      max-width: 760px; margin: 10vh auto 0; padding: 26px 30px;
+      font: 15px/1.8 -apple-system, "Segoe UI", "Microsoft YaHei", sans-serif;
+      color: #5a3a44; background: #fffafb; border: 1px solid #f3d3dc;
+      border-radius: 14px; box-shadow: 0 10px 30px rgba(216, 93, 126, .08);
+    }
+    #cms-fallback h1 { margin: 0 0 10px; font-size: 18px; color: #d85d7e; }
+    #cms-fallback p { margin: 8px 0; }
+    #cms-fallback ol { margin: 10px 0 0; padding-left: 22px; }
+    #cms-fallback pre {
+      white-space: pre-wrap; word-break: break-all;
+      background: #fff1f1; border-radius: 8px; padding: 12px 14px;
+      font-size: 13px; color: #8a4a58; margin: 14px 0 0;
+    }
+    #cms-fallback code {
+      background: #fff1f1; padding: 1px 5px; border-radius: 4px;
+      font-size: 13px; color: #c0456b;
+    }
   </style>
 </head>
 <body>
-  <script src="./decap-cms.js"></script>
+  <div id="cms-fallback">
+    <h1>内容管理后台没能启动</h1>
+    <p>把下面这段错误信息发给站长即可定位问题：</p>
+    <pre id="cms-error-text">正在等待错误信息…</pre>
+    <p style="margin-top:16px">如果提示里出现 <code>no repository set</code>，说明 Decap Turbo 站点还没绑定仓库：</p>
+    <ol>
+      <li>打开 <a href="https://turbo.decapcms.org" target="_blank" rel="noopener">turbo.decapcms.org</a>，进入本站点</li>
+      <li>在 Overview 里把 <b>Repo</b> 设为 <code>ildpulaoyy/lyy-blog</code></li>
+      <li>把 <b>Admin URL</b> 设为 <code>https://ildpulaoyy.github.io</code></li>
+      <li>保存后刷新本页</li>
+    </ol>
+  </div>
+
   <script>
-    if (window.CMS) {
-      CMS.init({ config: { load_config_file: true } });
+    window.CMS_MANUAL_INIT = true;
+
+    function showError(msg) {
+      var box = document.getElementById('cms-fallback');
+      var txt = document.getElementById('cms-error-text');
+      if (!box || !txt) return;
+      var text = (msg && msg.message) ? msg.message : String(msg || '未知错误');
+      txt.textContent = text;
+      box.style.display = 'block';
+      window.__cmsFailed = true;
+      if (window.console) console.error('[CMS]', msg);
     }
+
+    window.addEventListener('error', function (e) {
+      if (e && e.message) showError(e.message);
+    });
+    window.addEventListener('unhandledrejection', function (e) {
+      showError(e && e.reason);
+    });
+  </script>
+
+  <script src="./decap-cms.js"></script>
+
+  <script>
+    (function () {
+      if (!window.CMS) {
+        showError('CMS 脚本没有加载成功（window.CMS 不存在）。请确认 /admin/decap-cms.js 可以正常访问。');
+        return;
+      }
+      try {
+        var p = window.CMS.init({ config: { load_config_file: true } });
+        if (p && typeof p.catch === 'function') {
+          p.catch(function (err) { showError(err); });
+        }
+      } catch (err) {
+        showError(err);
+      }
+
+      // 兜底：若 8 秒后界面仍未渲染，给出可读提示
+      window.setTimeout(function () {
+        if (window.__cmsFailed) return;
+        var bodyText = (document.body.innerText || '').trim();
+        var hasUi = document.querySelector('#root, #nc-root, [class*="AppMain"], iframe');
+        if (!hasUi && bodyText.length < 60) {
+          showError('8 秒内界面没有渲染。最常见原因是 Decap Turbo 站点的 Repo 为空，或 Admin URL 未包含本页地址。');
+        }
+      }, 8000);
+    })();
   </script>
 </body>
 </html>
