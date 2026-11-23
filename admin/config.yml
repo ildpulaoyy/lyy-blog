@@ -1,0 +1,44 @@
+site_url: https://ildpulaoyy.github.io/lyy-blog/
+display_url: https://ildpulaoyy.github.io/lyy-blog/
+
+backend:
+  name: turbo-github
+  repo: ildpulaoyy/lyy-blog
+  branch: main
+  turbo_site_id: 70a7d597-ce9f-477a-bf7e-4dcdbf6a0079
+
+media_folder: "kanade-site/public/images/uploads"
+public_folder: "/lyy-blog/images/uploads"
+
+collections:
+  - name: "posts"
+    label: "文章"
+    label_singular: "文章"
+    folder: "kanade-site/src/content/posts"
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    extension: "md"
+    format: "yaml-frontmatter"
+    summary: "{{title}} — {{date}}"
+    fields:
+      - { label: "标题", name: "title", widget: "string" }
+      - { label: "日期", name: "date", widget: "date", format: "YYYY-MM-DD" }
+      - { label: "摘要", name: "description", widget: "text" }
+      - label: "分类"
+        name: "category"
+        widget: "select"
+        options: ["生活随笔", "开发笔记", "前端开发"]
+        default: "生活随笔"
+      - label: "标签"
+        name: "tags"
+        widget: "list"
+        default: ["日记本"]
+        field: { label: "标签", name: "tag", widget: "string" }
+      - label: "封面"
+        name: "cover"
+        widget: "select"
+        options: ["astro", "vue", "css", "notes", "life", "typescript", "git", "design"]
+        default: "notes"
+      - { label: "置顶", name: "featured", widget: "boolean", default: false }
+      - { label: "正文", name: "body", widget: "markdown" }
