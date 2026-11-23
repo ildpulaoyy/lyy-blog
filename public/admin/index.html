@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex" />
+  <title>内容管理 · 青椒的小站</title>
+  <style>
+    html, body { margin: 0; height: 100%; background: #fff1f1; }
+    #cms-loading { display: flex; align-items: center; justify-content: center; height: 100vh; font-family: system-ui, sans-serif; color: #d85d7e; }
+  </style>
+</head>
+<body>
+  <script src="./decap-cms.js"></script>
+  <script>
+    if (window.CMS) {
+      CMS.init({ config: { load_config_file: true } });
+    }
+  </script>
+</body>
+</html>
