@@ -17,7 +17,7 @@ collections:
     folder: "src/content/posts"
     create: true
     delete: true
-    slug: "{{slug}}"
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     extension: "md"
     format: "yaml-frontmatter"
     summary: "{{title}} — {{date}}"
@@ -40,5 +40,11 @@ collections:
         widget: "select"
         options: ["astro", "vue", "css", "notes", "life", "typescript", "git", "design"]
         default: "notes"
+        hint: "预设封面。如果下面上传了自己的图，会优先用自己的图。"
+      - label: "自定义封面图"
+        name: "coverImage"
+        widget: "image"
+        required: false
+        hint: "可选。上传自己的图片作封面，建议横图（约 16:9）。留空就用上面的预设封面。"
       - { label: "置顶", name: "featured", widget: "boolean", default: false }
       - { label: "正文", name: "body", widget: "markdown" }
